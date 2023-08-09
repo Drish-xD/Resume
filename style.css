@@ -32,7 +32,6 @@ body {
   line-height: 1.3;
   color: #222;
   -webkit-hyphens: auto;
-      -ms-hyphens: auto;
           hyphens: auto;
   margin: auto;
   border: 1px solid #000;
@@ -55,76 +54,73 @@ h3 {
   text-transform: uppercase;
 }
 
-#title h1 {
-  font-weight: 500;
-  font-size: 20pt;
-  line-height: 1.2;
-}
-#title span {
-  font-size: 10pt;
-}
-
 /* sidebar */
 aside {
   float: left;
   width: 2.0791666667in;
   height: 100%;
-  padding: 0.5in 0.25in 0.5in 0.3in;
+  padding-block: 1.8rem;
+  padding-inline: 1.6rem 1rem;
   background-color: #f2f2f2;
 }
+aside h1 {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+aside span {
+  font-size: 0.8rem;
+}
 aside #contact {
-  font-size: 8pt;
-  margin-top: 0.15in;
+  font-size: 1em;
+  margin-top: 1em;
+  font-weight: 400;
+  line-height: 2;
 }
 aside #contact i {
-  margin: 6px 5px 6px 0;
-}
-aside #contact ul {
-  font-weight: 400;
-  line-height: 1.75;
+  margin-right: 6px;
 }
 aside #skills {
-  margin-top: 0.62in;
+  margin-top: 2rem;
 }
 aside #skills h2 {
   font-weight: 400;
-  font-size: 11pt;
+  font-size: 1rem;
 }
 aside #skills h3 {
-  font-size: 8pt;
+  font-size: 1.1em;
   font-weight: 600;
-  margin-top: 0.1in;
+  margin-top: 1em;
 }
 aside #skills ul {
   display: inline-flex;
   flex-wrap: wrap;
 }
 aside #skills li {
-  margin: 2px 6px 3px 0px;
+  margin: 2px 3px;
   background-color: #fff;
   border: 1px solid rgba(35, 35, 35, 0.2);
   border-radius: 3px;
   font-weight: 400;
-  font-size: 7pt;
+  font-size: 1em;
   padding: 4px 8px;
-}
-
-.container:not(:first-child) {
-  margin-top: 0.2in;
 }
 
 main {
   float: right;
   width: 6.4in;
   height: 100%;
-  padding: 0.5in 0.3in;
+  padding: 1.8rem;
+}
+main section:not(:first-child) {
+  margin-top: 1rem;
 }
 main h2 {
   position: relative;
   top: 2pt;
   left: 0.2in;
   font-weight: 400;
-  font-size: 11pt;
+  font-size: 1rem;
   /**** minor tweaks on the icon fonts ****/
 }
 main h2 > i {
@@ -159,15 +155,14 @@ main li::before {
 .blocks:last-child .decorator {
   margin-bottom: 0.15in;
 }
-
-.decorator {
+.blocks .decorator {
   flex: 0 0 0;
   position: relative;
   width: 2pt;
   min-height: 100%;
   border-left: var(--decorator-border);
 }
-.decorator::before {
+.blocks .decorator::before {
   position: absolute;
   content: " ";
   top: var(--decorator-outer-offset-top);
@@ -178,7 +173,7 @@ main li::before {
   border-radius: calc(var(--decorator-outer-dim) / 2);
   background-color: #fff;
 }
-.decorator::after {
+.blocks .decorator::after {
   position: absolute;
   top: calc(var(--decorator-outer-offset-top) + var(--decorator-border-width));
   left: calc(var(--decorator-outer-offset-left) + var(--decorator-border-width));
@@ -191,7 +186,7 @@ main li::before {
 }
 
 #activites .details {
-  padding-top: 5pt;
+  padding-top: 0.4em;
 }
 #activites .decorator::after {
   top: calc(var(--decorator-outer-offset-top) - 7px);
