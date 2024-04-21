@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic);
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 @page {
   size: letter portrait;
 }
@@ -11,12 +11,12 @@
 
 :root {
   --decorator-horizontal-margin: 0.2in;
-  --decorator-outer-offset-top: 17px;
+  --decorator-outer-offset-top: 10px;
   --decorator-outer-offset-left: -5px;
   --decorator-border-width: 1px;
   --decorator-outer-dim: 9px;
   --decorator-border: 1px solid #ccc;
-  --row-blocks-padding-top: 5pt;
+  --row-blocks-padding-top: 6pt;
   --icon-offset-left: -19pt;
 }
 
@@ -28,11 +28,11 @@ html {
 body {
   width: 8.5in;
   height: 11in;
-  font: 400 7.5pt "Open Sans", sans-serif;
+  font: 400 7.5pt "Inter", sans-serif;
   line-height: 1.3;
   color: #222;
   -webkit-hyphens: auto;
-          hyphens: auto;
+  hyphens: auto;
   margin: auto;
   border: 1px solid #000;
   background-color: #fff;
@@ -175,13 +175,19 @@ main li::before {
 }
 .blocks .decorator::after {
   position: absolute;
-  top: calc(var(--decorator-outer-offset-top) + var(--decorator-border-width));
-  left: calc(var(--decorator-outer-offset-left) + var(--decorator-border-width));
+  top: calc(
+    var(--decorator-outer-offset-top) + var(--decorator-border-width) + 1px
+  );
+  left: calc(
+    var(--decorator-outer-offset-left) + var(--decorator-border-width)
+  );
   content: " ";
   display: block;
   width: calc(var(--decorator-outer-dim) - var(--decorator-border-width) * 2);
   height: calc(var(--decorator-outer-dim) - var(--decorator-border-width) * 2);
-  border-radius: calc((var(--decorator-outer-dim) - var(--decorator-border-width) * 2) / 2);
+  border-radius: calc(
+    (var(--decorator-outer-dim) - var(--decorator-border-width) * 2) / 2
+  );
   background-color: #555;
 }
 
@@ -189,10 +195,10 @@ main li::before {
   padding-top: 0.4em;
 }
 #activites .decorator::after {
-  top: calc(var(--decorator-outer-offset-top) - 7px);
+  top: calc(var(--decorator-outer-offset-top) - 3px);
 }
 #activites .decorator::before {
-  top: calc(var(--decorator-outer-offset-top) + var(--decorator-border-width) - 8.8px);
+  top: calc(var(--decorator-outer-offset-top) + var(--decorator-border-width));
 }
 #activites ul {
   display: flex;
@@ -202,7 +208,7 @@ main li::before {
 .details {
   flex: 1 0 0;
   padding-left: var(--decorator-horizontal-margin);
-  padding-top: calc(var(--row-blocks-padding-top) + 5pt);
+  padding-top: var(--row-blocks-padding-top);
 }
 .details div {
   clear: both;
@@ -238,4 +244,4 @@ main li::before {
 }
 .others .flex ul {
   flex: 1 0 0;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
