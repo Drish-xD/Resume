@@ -113,7 +113,7 @@ main {
   padding: 1.8rem;
 }
 main section:not(:first-child) {
-  margin-top: 1rem;
+  margin-top: 0.9rem;
 }
 main h2 {
   position: relative;
@@ -121,7 +121,6 @@ main h2 {
   left: 0.2in;
   font-weight: 400;
   font-size: 1rem;
-  /**** minor tweaks on the icon fonts ****/
 }
 main h2 > i {
   position: absolute;
@@ -165,11 +164,11 @@ main li::before {
 .blocks .decorator::before {
   position: absolute;
   content: " ";
-  top: var(--decorator-outer-offset-top);
+  top: calc(var(--decorator-outer-offset-top) + 2px);
   left: var(--decorator-outer-offset-left);
   display: block;
-  width: var(--decorator-outer-dim);
-  height: var(--decorator-outer-dim);
+  width: calc(var(--decorator-outer-dim) - 2px);
+  height: calc(var(--decorator-outer-dim) - 2px);
   border-radius: calc(var(--decorator-outer-dim) / 2);
   background-color: #fff;
 }
@@ -192,16 +191,19 @@ main li::before {
 }
 
 #activites .details {
-  padding-top: 0.4em;
+  padding-top: 0.5em;
 }
 #activites .decorator::after {
   top: calc(var(--decorator-outer-offset-top) - 3px);
 }
 #activites .decorator::before {
-  top: calc(var(--decorator-outer-offset-top) + var(--decorator-border-width));
+  top: calc(
+    var(--decorator-outer-offset-top) + var(--decorator-border-width) - 5px
+  );
 }
 #activites ul {
   display: flex;
+  margin-top: 0.25em;
   gap: 15pt;
 }
 
@@ -210,9 +212,19 @@ main li::before {
   padding-left: var(--decorator-horizontal-margin);
   padding-top: var(--row-blocks-padding-top);
 }
-.details div {
+.details div,
+.details ul {
   clear: both;
 }
+
+.details ul li {
+  margin-bottom: 0.5em;
+}
+
+.details ul li:last-of-type {
+  margin-bottom: 0.1em;
+}
+
 .details h3 {
   font-size: 9pt;
   font-weight: 700;
@@ -244,4 +256,4 @@ main li::before {
 }
 .others .flex ul {
   flex: 1 0 0;
-} /*# sourceMappingURL=style.css.map */
+}
