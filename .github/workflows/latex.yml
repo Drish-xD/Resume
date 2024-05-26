@@ -20,7 +20,11 @@ jobs:
           git config --global user.email "drish.xd@gmail.com"
           git config --global user.name "Drish-xD"
           git checkout -b gh-pages
-          ls -a
-          git add .
+          git add Drish_Resume.pdf
           git commit -m "Update PDF"
           git push --force origin gh-pages
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Drish_Resume.pdf
