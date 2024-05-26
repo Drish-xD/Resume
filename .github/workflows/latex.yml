@@ -9,6 +9,13 @@ jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
+      - name: Set Git identity
+        run: |
+          git config --global user.email "drish.xd@gmail.com"
+          git config --global user.name "Drish-xD"
+
+      - name: Set up Git repository
+        uses: actions/checkout@v4
       - name: Set up Git repository
         uses: actions/checkout@v4
 
@@ -25,19 +32,19 @@ jobs:
 
       - name: Checkout to empty branch
         run: |
-          git checkout --orphan gh-pages
+          git checkout --orphan live
           git rm -rf .
           git clean -xffd
           git commit --allow-empty -m "Cleaned up branch"
-          git push --force origin gh-pages
+          git push --force origin live
 
       - name: Copy resume to branch
         run: |
-          git checkout gh-pages
+          git checkout live
           git checkout ${{ github.sha }} Drish_Resume.pdf
           git add Drish_Resume.pdf
           git commit -m "Update PDF"
-          git push --force origin gh-pages
+          git push --force origin live
 
       - name: Create Release
         if: github.event_name != 'workflow_dispatch'
