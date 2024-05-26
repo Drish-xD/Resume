@@ -1,29 +1,46 @@
 name: Build LaTeX document
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
+
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
           root_file: Drish_Resume.tex
+
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
           name: Resume
           path: Drish_Resume.pdf
-      - name: Deploy to gh-pages
+
+      - name: Checkout to empty branch
         run: |
-          git config --global user.email "drish.xd@gmail.com"
-          git config --global user.name "Drish-xD"
-          git checkout -b gh-pages
+          git checkout --orphan gh-pages
+          git rm -rf .
+          git clean -xffd
+          git commit --allow-empty -m "Cleaned up branch"
+          git push --force origin gh-pages
+
+      - name: Copy resume to branch
+        run: |
+          git checkout gh-pages
+          git checkout ${{ github.sha }} Drish_Resume.pdf
           git add Drish_Resume.pdf
           git commit -m "Update PDF"
           git push --force origin gh-pages
+
       - name: Create Release
+        if: github.event_name != 'workflow_dispatch'
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
