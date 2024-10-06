@@ -28,31 +28,41 @@
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 \addtolength{\textheight}{1.0in}
 
-% Custom commands
-\titleformat{\section}{\vspace{-9pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule\vspace{-6pt}]
+% % Custom commands
+\titleformat{\section}{\vspace{-8pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule\vspace{-6pt}]
 
-% Tabular heading 2 lines
-\newcommand{\hTable}[4]{
+% Tabular heading
+\newcommand{\newHeading}[4]{
 	\item
 	\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-		\vspace{-2pt}\textbf{#1} & \small{#2} \\
+		\textbf{#1} & \small{#2} \\
 		\textit{\small{#3}} & \textit{\small{#4}}
-	\end{tabular*}\vspace{-10pt}
-}
-
-% Resume Subheadings
-\newcommand{\hLine}[3]{
-	\item
-	\begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-		\textbf{#1} $|$ \emph{#2} & \small{#3} \\
 	\end{tabular*}
+	\vspace{-10pt}
 }
 
-% Section marking
-\newcommand{\sectionStart}[1][]{\begin{itemize}[leftmargin=0.15in, label={#1}]}
-\newcommand{\sectionEnd}{\end{itemize}}
+\newcommand{\headingContinue}[2]{
+	\item
+	\vspace{-5pt}
+	\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+		\textit{\small{#1}} & \textit{\small{#2}}
+	\end{tabular*}
+	\vspace{-10pt}
+}
+
+
+% Command to handle section title and start of section
+\newcommand{\sectionStart}[2][]{%
+	\section{#2}
+	\begin{itemize}[leftmargin=0.15in, label={#1}]
+		}
+
+		\newcommand{\sectionEnd}{\end{itemize}}
+
 
 % ul li commands
 \newcommand{\ulStart}{\begin{itemize}}
-\newcommand{\ulEnd}{\end{itemize}}
+
+		\newcommand{\ulEnd}{\end{itemize}}
+
 \newcommand{\li}[1]{\item\small{{#1\vspace{-2pt}}}}
